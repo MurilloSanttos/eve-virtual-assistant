@@ -1,0 +1,69 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: windows-latest # Usar Windows para garantir compatibilidade com pywin32 e ambiente de destino
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip' # Cachear dependências do pip
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install poetry # Instalar Poetry
+        poetry install --no-root # Instalar dependências do pyproject.toml
+
+    - name: Run Linting (Flake8)
+      run: |
+        poetry run flake8 src/ tests/
+
+    - name: Run Formatting Check (Black)
+      run: |
+        poetry run black --check src/ tests/
+
+    - name: Run Tests (Pytest)
+      run: |
+        poetry run pytest tests/
+
+  # Futuro passo de CD (exemplo para empacotamento de versão beta)
+  # deploy_beta:
+  #   needs: build
+  #   runs-on: windows-latest
+  #   if: github.ref == 'refs/heads/develop' # Apenas para pushes na branch develop
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     - name: Set up Python 3.11
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: '3.11'
+  #     - name: Install dependencies
+  #       run: |
+  #         python -m pip install --upgrade pip
+  #         pip install poetry pyinstaller
+  #         poetry install --no-root
+  #     - name: Build Windows Executable
+  #       run: |
+  #         poetry run pyinstaller --noconsole --onefile src/main.py
+  #     - name: Upload Artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: eve-beta-installer
+  #         path: dist/main.exe

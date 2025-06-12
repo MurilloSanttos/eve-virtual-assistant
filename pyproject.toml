@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "eve-virtual-assistant"
+version = "0.1.0"
+description = "Inteligência Artificial Assistente Virtual para Windows"
+authors = ["Murilo Azevedo <muriilloosanttos@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+# Core AI/NLP
+vosk = "^0.3.45" # STT offline
+pyaudio = "^0.2.14" # Dependência para PyAudio (para captura de áudio)
+pyttsx3 = "^2.90" # TTS offline
+# Para NLU, considere spaCy ou NLTK. spaCy é mais robusto para produção.
+spacy = "^3.7.4"
+# Para interações com SO
+pywin32 = "^306" # Acesso a APIs do Windows
+psutil = "^5.9.8" # Informações do sistema
+pycaw = "^0.8.0" # Controle de volume
+# GUI
+pyside6 = "^6.6.2" # Framework Qt para GUI
+# Integrações Externas
+requests = "^2.31.0" # Requisições HTTP
+google-api-python-client = "^2.120.0" # Google APIs (Calendar, Gmail)
+google-auth-oauthlib = "^1.2.0" # Autenticação OAuth para Google
+microsoft-graph-sdk = "^1.0.0" # Microsoft Graph APIs (Outlook)
+# Persistência (sqlite3 é nativo, não precisa listar aqui)
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+flake8 = "^7.0.0"
+black = "^24.3.0"
+mypy = "^1.9.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
