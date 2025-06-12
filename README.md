@@ -2,11 +2,11 @@
 
 ## Visão Geral
 
-A EVE é uma Inteligência Artificial Assistente Virtual projetada para sistemas operacionais Windows, desenvolvida principalmente em Python 3.11. Seu objetivo é simplificar a interação do usuário com o computador através de comandos de voz e texto, automatizando tarefas, gerenciando arquivos, integrando-se a serviços externos e oferecendo uma experiência personalizada e contextual. A EVE busca ser uma ferramenta eficiente e intuitiva para aumentar a produtividade e a acessibilidade no ambiente Windows.
+A EVE é uma Inteligência Artificial Assistente Virtual projetada para sistemas operacionais Windows, desenvolvida principalmente em Python 3.10. Seu objetivo é simplificar a interação do usuário com o computador através de comandos de voz e texto, automatizando tarefas, gerenciando arquivos, integrando-se a serviços externos e oferecendo uma experiência personalizada e contextual. A EVE busca ser uma ferramenta eficiente e intuitiva para aumentar a produtividade e a acessibilidade no ambiente Windows.
 
 ## Tecnologias Base
 
-*   **Python 3.11:** Linguagem de programação principal.
+*   **Python 3.10:** Linguagem de programação principal.
 *   **Reconhecimento de Fala (STT):** Utiliza `Vosk` para processamento offline e pode integrar-se a APIs de nuvem (ex: Google Cloud Speech-to-Text) para maior acurácia.
 *   **Síntese de Fala (TTS):** Emprega `pyttsx3` para geração de voz offline, aproveitando os motores de fala do Windows.
 *   **Processamento de Linguagem Natural (PLN):** Baseado em `spaCy` para reconhecimento de intenção, extração de entidades e gerenciamento de diálogo.
